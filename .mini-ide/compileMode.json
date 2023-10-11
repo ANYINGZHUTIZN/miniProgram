@@ -1,0 +1,28 @@
+{
+  "modes": [
+    {
+      "title": "pages/shop/shop",
+      "page": "pages/shop/shop",
+      "launchMode": "common",
+      "pageQuery": ""
+    },
+    {
+      "title": "index",
+      "page": "pages/index/index",
+      "launchMode": "common",
+      "pageQuery": ""
+    },
+    {
+      "title": "test",
+      "page": "pages/test/test",
+      "launchMode": "common",
+      "pageQuery": ""
+    },
+    {
+      "title": "pages/message/message",
+      "page": "pages/message/message",
+      "launchMode": "common",
+      "pageQuery": ""
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+<view class="container">
+  <!-- 头部 -->
+  <view class="head">
+    <view class="score-box">
+      <view class="score-box-image">
+      </view>
+      <view class="score-box-text">租币当钱花</view>
+    </view>
+    <view class="score-box-coin">
+      <view class="score-box-text">可用租币</view>
+      <view class="useable-coin">1560</view>
+    </view>
+    <view class="head-rule flex">
+      <image src="../../images/shop/help.png" />
+      <text>规则</text>
+    </view>
+    <view>
+      <image onTap="showModal" class="get-coin" src="../../images/shop/getcoin.png" />
+    </view>
+  </view>
+  <!-- 滑动块 -->
+  <scroll-view class="scroll" scroll-x="{{true}}">
+    <image a:for="{{ 6 }}" class="item" src="../../images/shop/goods_pic.png" />
+  </scroll-view>
+  <!-- 兑换商城 -->
+  <view class="shop-floor">
+    <view class="shop-card">
+      <view class="title">
+        <view class="flex">
+          <text>兑换商城</text>
+          <image class="help" src="../../images/shop/help.png" />
+        </view>
+        <view>
+          <text>兑换记录</text>
+          <image class="arrow" src="../../images/shop/right_arrow.png" />
+        </view>
+      </view>
+      <view class="select">
+        <view a:for="{{ selectList }}" class="select-box">{{item}}</view>
+      </view>
+   <view class="shop-box flex">
+    <view class="card" a:for="{{ goodsList }}">
+      <image  src="{{item.imgOssServer+item.cover}}" />
+     <view class="text">
+      <text>{{item.title}}</text>
+      <text>{{item.need_coin}}租币+{{item.price}}元</text>
+      <text>已兑{{item.sort}}件</text>
+     </view>
+    </view>
+    <view class="loading" a:if="{{loading}}">正在加载中...</view>
+   </view>
+    </view>
+  </view>
+  </view>
+    <!-- 弹窗 -->
+    <view onTap="hideModal" class="overlay {{ showModal ? 'show' : '' }}"></view>
+    <view class="modal {{ showModal ? 'show' : '' }}">
+      
+        <view class="modal-head flex">
+          <view class="txt">天天做任务赚翻租币</view>
+          <view >已获得<text class="num">3321</text> 个租币，租币可兑换商品</view>
+          <view onTap="hideModal" class="close flex">X</view>
+        </view>
+       
+        <view class="modal-content">
+        <text class="txt">新人专享</text>
+        <view class="task" a:for="{{ 8 }}">
+          <view class="left flex">
+            <view class="avatar">
+            </view>
+            <text>收藏人人租机小程序{{item}}</text>
+          </view>
+          <view class="right flex" onTap="showToast">+30租币</view>
+        </view>
+      </view>
+    </view>
+      <!-- 消息提示框 -->
+    <view id="toast" class=" {{ showToast ? 'toast' : 'toast-hidden' }}">
+        <view class="left">
+          <image src="../../images/index/coin.png" />
+          <view>
+            <view>恭喜获得20个租币！</view>
+            <view>任务完成</view>
+          </view>
+        </view>
+        <view class="right">+10</view>
+    </view>
+

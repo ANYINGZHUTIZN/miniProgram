@@ -1,0 +1,60 @@
+<view class="container">
+  <!-- 背景图 -->
+  <view class="head">
+    <navigator url="../message/message">
+      <view class="dot">2</view>
+      <image class="message" src="../../images/index/message.png" />
+    </navigator>
+    <image class="regular" src="../../images/index/ruler.png" />
+    <view class="num">
+      <image class="num-coin" src="../../images/index/coin.png" />
+      <text>32</text>
+    </view>
+    <view class="num2" onTap="changeSign">
+      <image class="num-date" src="../../images/index/date.png" />
+      <text  a:if={{singIn}}>已签到</text>
+      <text a:else>未签到</text>
+      <view class="dot" a:if={{!singIn}}></view>
+    </view>
+    <image class="circle circle1" src="../../images/index/green.png" />
+    <image class="circle circle2" src="../../images/index/green.png" />
+    <image class="circle circle3" src="../../images/index/green.png" />
+    <image class="circle circle4" src="../../images/index/yellow.png" />
+    <image class="circle circle5" src="../../images/index/green.png" />
+    <view class="step-box">
+      <view class="text">今日步数</view>
+      <view class="step">2748</view>
+      <view class="text">每日24:00自动清零</view>
+      <image class="boy" src="../../images/index/boy.png" />
+      <image class="girl" src="../../images/index/girl.png" />
+      <navigator class="btn flex" url="../shop/shop">瓜分888现金</navigator>
+    </view>
+  </view>
+  <!-- 租币商城 -->
+  <view class="scroll">
+    <text class="text">租币当钱花</text>
+    <scroll-view class="box" scroll-x="{{true}}">
+      <navigator  url="../shop/shop"  a:for="{{ 5 }}">
+      <image  class="item" src="../../images/index/pic_shop.png" />
+    </navigator>    
+  </scroll-view>
+  </view>
+  <!-- 租物推荐 -->
+  <view class="content">
+    <view class="text">租物推荐</view>
+    <view class="goods-container flex">
+      <view class="goods-card" a:for="{{ 4 }}">
+        <image src="../../images/index/Bitmap.png" />
+       <view class="goods-detail">
+        <view class="title">顶配 iPhone Xs 256…</view>
+        <view class="flag">免押金</view>
+        <view class="price">
+          <text>¥6.88/天</text>
+          <text>30天起租</text>
+        </view>
+       </view>
+      </view>
+      <view class="more flex">查看更多</view>
+    </view>
+  </view>
+</view>

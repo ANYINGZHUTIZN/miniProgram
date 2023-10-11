@@ -1,0 +1,99 @@
+<!-- tab栏 -->
+<view class="tabbar">
+  <block a:for="{{tabs}}">
+    <view
+      class="tab {{index === currentTab ? 'active' : ''}}"
+      onTap="switchTab"
+      data-index="{{index}}"
+    >
+      <text>{{item.title}}</text>
+      <image
+        a:if="{{index !== currentTab && item.showDot }}"
+        class="tabbar-dot"
+        src="../../images/message/dot.png"
+      />
+    </view>
+  </block>
+</view>
+<!-- 列表操作栏 -->
+<view class="operation">
+  <view>
+    <image src="../../images/message/delete.png" />
+    <text onTap="delAllRead">删除已读</text>
+  </view>
+  <view class="interval">
+  </view>
+  <view>
+    <image src="../../images/message/clear.png" />
+    <text onTap="readAll">一键已读</text>
+  </view>
+</view>
+<!--活动公告/订单消息 -->
+<view class="tab-content">
+  <view a:if="{{ listData[currentTab].length > 0 }}" onTap="showModal">
+    <view
+      a:for="{{ listData[currentTab] }}"
+      class="list"
+      onTap="getListIndex"
+      data-index="{{index}}"
+    >
+      <view class="list-top">
+        <view class="left">
+          <image a:if="{{currentTab===0  }}" src="../../images/message/clock.png" />
+          <image a:else src="../../images/message/message.png" />
+          <image a:if="{{ !item.isRead }}" class="list-dot" src="../../images/message/dot.png" />
+          <text class="title">{{item.title}}---{{++index}}</text>
+        </view>
+        <view class="time">
+          <text>{{item.date}}</text>
+          <text>{{item.time}}</text>
+        </view>
+      </view>
+      <text class="content">{{item.content}}</text>
+    </view>
+    <view a:if="{{loading}}" class="loading flex">正在加载中...</view>
+    <view a:else class="loading-finish">没有更多了</view>
+  </view>
+  <view a:else class="list-null flex">
+    <image src="../../images/message/null.png" />
+    <text>暂无消息</text>
+  </view>
+</view>
+<!-- 列表详情弹窗 -->
+<view onTap="getReadOk" class="overlay {{ showModal ? 'show' : '' }}"></view>
+<view class="modal {{ showModal ? 'show' : '' }}">
+  <view class="modal-box">
+    <text>活动通知</text>
+    <text>
+      恭喜获得20个租币，请查收。为了感谢其长久以来的陪伴，这里的文字请忽略。活动期间每天 11 点还会上线限量礼包，数量有限先到先得、用户们千万不要错过!
+    </text>
+    <image src="../../images/message/prize.png" />
+    <text>小标题</text>
+    <text>此外，对于所有有贡献的用户。</text>
+  </view>
+  <view class="modal-btn flex">
+    <view class="modal-btn-del flex" onTap="deleteList">删除</view>
+    <view class="modal-btn-ok flex" onTap="getReadOk">确定</view>
+  </view>
+</view>
+<!-- 底部消息提示 -->
+<view id="toast" class=" {{ showToast ? 'toast' : 'toast-hidden' }}">
+  <view class="left">
+    <image src="../../images/index/coin.png" />
+    <view>
+      <view>恭喜获得20个租币！</view>
+      <view>任务完成</view>
+    </view>
+  </view>
+  <view class="right">+10</view>
+</view>
+<!-- 删除已读弹窗 -->
+<view class="overlay {{ dialogDelRead ? 'show' : '' }}" onTap="modalCancel">
+</view>
+<view class="{{ dialogDelRead ? 'modal-del':'modal-del-noen'}}">
+  <view class="txt">是否确认要删除已读通知</view>
+  <view class="btn">
+    <view onTap="modalOk">确认删除</view>
+    <view onTap="modalCancel">取消</view>
+  </view>
+</view>
